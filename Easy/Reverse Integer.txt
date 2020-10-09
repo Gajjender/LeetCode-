@@ -1,0 +1,41 @@
+import java.util.Scanner;
+class Reverse{
+    public static int reverse(int x){
+    	long temp=x;
+    	long reverse=0;
+    	boolean isPositive=true;
+
+    	if(x<0){
+    		isPositive=false;
+    		temp=(~temp)+1;
+    	}
+       if(temp>Integer.MAX_VALUE)
+       return 0;  
+
+        while(temp!=0){
+        	int rem=(int)temp % 10;
+        	if(reverse*10>Integer.MAX_VALUE){
+        		return 0;
+        	}
+        	reverse=reverse*10+rem;
+        	temp=temp/10;
+        }
+
+        if(isPositive==false)
+        	return(-((int)reverse));
+        else
+        	return (int)reverse;
+    }
+   
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the number for reverse : ");
+		int x=sc.nextInt();
+		System.out.print("The number is : "+reverse(x));
+	}
+}
+
+
+//Easy Problem 
+//All test Cases Passed
