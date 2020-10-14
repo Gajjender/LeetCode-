@@ -1,0 +1,29 @@
+public static String longestCommonPrefix(String[] strs) {
+       if(strs==null||strs.length==0)
+           return "";
+       //finding the shortest word in the array
+        String match=strs[0];
+        for(String a:strs){
+            if(a.length()<match.length()){
+                match=a;
+            }
+        }
+       //mattching the shortest word with all the elemnents if not then removing the last letter and retry, till all the string's prefix are matched 
+      
+        for(int j=match.length();j>=0;j--){
+            int count =0;
+            String temp = match.substring(0,j);
+            for(int i=0;i<strs.length;i++){
+                if(strs[i].substring(0,j).contains(temp)){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+            //checking if all the elements have same prefix
+            if(count==strs.length){
+                return temp;
+            }
+        }
+        return "";
+    }
